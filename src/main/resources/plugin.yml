@@ -1,0 +1,36 @@
+name: Rpi_Plugin
+version: '${project.version}'
+main: icanthink.rpiplugin.RpiPlugin
+api-version: 1.19
+
+depend: [NickAPI]
+
+commands:
+  nick:
+    description: Set your nick name
+    usage: /<command> <name>
+    permission: rpi.nick
+  getnick:
+    description: Get your current nick name
+    usage: /<command>
+    permission: rpi.getnick
+  setteamdata:
+    description: A mod command
+    usage: /<command> <name> <visible name> <color>
+    permission: rpi.setteamdata
+  setteam:
+    description: A mod command
+    usage: /<command> <username> <team>
+    permission: rpi.setteam
+  setteamoffline:
+    description: A mod command
+    usage: /<command> <username> <team>
+    permission: rpi.setteamoffline
+  chat:
+    description: Toggles Chat Mode
+    usage: /<command>
+    permission: rpi.chat
+  calculator:
+    description: Solves a math equation
+    usage: /<command> <question> ...
+    permission: rpi.calculator
