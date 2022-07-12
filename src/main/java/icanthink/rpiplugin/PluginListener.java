@@ -68,7 +68,7 @@ public class PluginListener implements Listener {
                 }
                 if (answer_attempt) {
                     if (event.getMessage().contains("−")) {
-                        Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> event.getPlayer().getWorld().strikeLightning(event.getPlayer().getLocation()));
+                        Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> RpiPlugin.safe_lightening_strike(event.getPlayer()));
                         Bukkit.broadcastMessage(NickAPI.getName(event.getPlayer()) + ChatColor.RED + " just tried to cheat a math question using Desmos!");
                         player_data.put("answer", "noquestion");
                         return;
@@ -106,7 +106,7 @@ public class PluginListener implements Listener {
                         player_data.putIfAbsent("incorrect_math", "0");
                         int count = Integer.parseInt(player_data.get("incorrect_math"));
                         player_data.put("incorrect_math", String.valueOf(count + 1));
-                        Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> event.getPlayer().getWorld().strikeLightning(event.getPlayer().getLocation()));
+                        Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> RpiPlugin.safe_lightening_strike(event.getPlayer()));
                         Bukkit.broadcastMessage(NickAPI.getName(event.getPlayer()) + ChatColor.RED + " answered a math problem incorrectly! They have answered incorrectly " + player_data.get("incorrect_math") + " time(s)");
                     }
                     player_data.put("answer", "noquestion");

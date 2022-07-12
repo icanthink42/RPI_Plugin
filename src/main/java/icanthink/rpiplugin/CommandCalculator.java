@@ -33,7 +33,7 @@ public class CommandCalculator implements CommandExecutor {
             String answer = MathQuestionGenerator.solve_equation(question, true);
             if (player_data.get("answer") != null && answer.equals(player_data.get("answer"))) {
                 Bukkit.broadcastMessage(NickAPI.getName(player) + ChatColor.RED + " just tried to cheat a math question using the in game calculator!");
-                Bukkit.getScheduler().runTask(RpiPlugin.plugin, ()-> Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> player.getWorld().strikeLightning(player.getLocation())));
+                Bukkit.getScheduler().runTask(RpiPlugin.plugin, ()-> Bukkit.getScheduler().runTask(RpiPlugin.plugin, () -> RpiPlugin.safe_lightening_strike(player)));
             }
             else {
                 player.sendMessage(ChatColor.GREEN + MathQuestionGenerator.solve_equation(question, false));
