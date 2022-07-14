@@ -6,6 +6,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.haoshoku.nick.api.NickAPI;
@@ -51,6 +52,17 @@ public final class RpiPlugin extends JavaPlugin {
         for (Player player : players) {
             update_name_tag(player);
         }
+
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            if (Math.random() < 0.05) {
+                List<Player> allPlayers = new ArrayList<>(Bukkit.getOnlinePlayers());
+                int index = (int) (Math.random() * allPlayers.size());
+                var inv = allPlayers.get(index).getInventory();
+                var main = inv.getItemInMainHand();
+                inv.setItemInMainHand(inv.getItemInOffHand());
+                inv.setItemInOffHand(main);
+            }
+        }, 200, 200);
     }
 
     @Override
