@@ -137,8 +137,8 @@ public final class RpiPlugin extends JavaPlugin {
     static void safe_lightening_strike(Player player) {
         boolean villager = false;
         Entity[] entities = player.getWorld().getNearbyEntities(player.getLocation(), 8, 8, 8).toArray(new Entity[0]);
-        for (int i = 0; i < entities.length; i++) {
-            if (entities[i].getType() == EntityType.VILLAGER) {
+        for (Entity entity : entities) {
+            if (entity.getType() == EntityType.VILLAGER) {
                 villager = true;
                 break;
             }
